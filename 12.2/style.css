@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    text-align: center;
+}
+div {
+    background: #444;
+    color: #fff;
+    position: absolute;
+    width: 300px;
+}
+
+#second {
+    left: 320px;
+}
+
+#third {
+    left: 640px;
+}
+
+#fourth {
+    left: 960px;
+}
+
+@media (max-width: 1300px) {
+    #first {
+        left: 0;
+    }
+    #second {
+        left: 0;
+        top: 170px;
+    }
+
+    #third {
+        left: 0;
+        top: 340px;
+    }
+
+    #fourth {
+        left: 0;
+        top: 510px;
+    }
+}
