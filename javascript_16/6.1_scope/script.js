@@ -1,7 +1,7 @@
 //block 1
 function funcA(){
     console.log(a);// => undefined, we can't access var (a) before we declare it
-    console.log(foo()); // => 2, we can call function foo() because it is the function block
+    console.log(foo()); // => 2, we can call function foo() because it is the function scope
 
     var a = 1;
     function foo(){
@@ -62,7 +62,7 @@ function funcD2(){
     var e = 1;
 }
 funcD2()
-//console.log(e); // e is not defined error => (e) is function block we cant access it from outside, if we remove the "var" it will become automatically global
+console.log(e); // e is not defined error => (e) is function scope we cant access it from outside, if we remove the "var" it will become automatically global
 
 
 //block 6
