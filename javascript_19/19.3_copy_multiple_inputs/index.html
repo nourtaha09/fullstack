@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            font-size: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .number{
+            font-size: 30px;
+            text-align: center;
+        }
+        .box{
+            border: 1px;
+            border-style: solid;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            width: 400px;
+            text-align: center;
+        }
+        input{
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+        }
+        button{
+            color: white;
+            background-color: black;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title">Text to copy:</div>
+    <div class="number">123456</div>
+    <center>
+        <div class="box">
+            <div id="inputs">
+    
+            </div>
+            <button onclick="submit()">
+                Verify
+            </button>
+            <script>
+                const inputs = document.querySelector('#inputs')
+
+                for(let i = 0; i < 6; i++){
+                    const node = document.createElement('input')
+
+                    node.setAttribute('index',i)
+                    node.setAttribute('maxlength','1')
+                    node.addEventListener("paste",fill)
+                    node.addEventListener('input',next)
+                    inputs.appendChild(node)
+                }
+                function next(e){
+                    const index = parseInt(e.path[0].getAttribute('index'))
+                    
+                    if(index < 5){
+                        console.log(index)
+                        const next = index + 1
+                        console.log(next)
+                        const nextNode = document.querySelector(`input[index="${next}"]`)
+                        console.log(nextNode)
+                        nextNode.focus()
+                    }else{
+                        submit()
+                    }
+                }
+                function fill(e){
+                    let past = (e.clipboardData || window.clipboardData).getData('text')
+                    console.log(past)
+                    if(past){
+                        if(past.length === 6){
+                            for(let i = 0; i < past.length; i++){
+                                const input = document.querySelector(`input[index="${i}"]`)
+                                
+                                input.value = past[i]
+                            }
+                            submit()
+
+                        }else{
+                            alert("not valid text")
+                        }
+                    }
+                   return e.preventDefault()
+
+                }
+
+                function submit(){
+                    let text = '';
+                    const number = document.querySelector('.number').innerHTML;
+                    [...inputs.children].forEach(e=>{
+                        text+=e.value
+                        e.value = ''
+                    })
+                    alert(`your submit ${text} which is ${text === number}`)
+                }
+            </script>
+        </div>
+    </center>
+</body>
+</html>
