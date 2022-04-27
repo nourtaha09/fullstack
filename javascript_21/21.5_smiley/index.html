@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       img{
+           margin: 2px;
+       } 
+    </style>
+</head>
+<body>
+    <p>
+        How many smileys do you want to see?
+    </p>
+    <input></input>
+    <button>submit</button>
+    <div id="smiley">
+
+    </div>
+</body>
+<script>
+    const button = document.querySelector('button')
+    const smiley = document.querySelector('#smiley')
+    const input = document.querySelector('input')
+
+    button.addEventListener('click', ()=>{
+        smiley.innerHTML = ''
+        const number = parseInt(input.value)
+        console.log(number)
+        for(let i = 0; i< number; i++){
+            const node = document.createElement('img')
+            node.setAttribute('src','smiley.png')
+            node.setAttribute('height','30px')
+            smiley.appendChild(node)
+        }
+    })
+
+</script>
+</html>

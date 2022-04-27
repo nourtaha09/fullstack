@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            display: block;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <center>
+        <img src="off.png" height="200px">
+        <button>
+            on
+        </button>
+    </center>
+</body>
+<script>
+    const button = document.querySelector('button')
+    const img = document.querySelector('img')
+    let on = false
+    button.addEventListener('click',()=>{
+        if(on){
+            img.setAttribute('src','off.png')
+            button. innerHTML = 'on'
+            on = false
+        }else{
+            img.setAttribute('src','on.png')
+            button. innerHTML = 'off'
+            on = true
+            
+        }
+    })
+
+</script>
+</html>
